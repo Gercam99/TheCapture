@@ -52,7 +52,7 @@ namespace CTF
 
         /// <summary>
         /// Funcion encargada de disparar
-        /// </summary>
+        /// </summary>        
         private void Shoot()
         {
             //Cuando presionamos el boton y el tiempo de juego es superior al tiempo de disparo podremos
@@ -74,10 +74,16 @@ namespace CTF
                 //Creamos una fisica de rayo. Si colisionamos con un objeto se creara un hit y alcanzara su objetivo
                 //sino colisiona con nada, obtendrá el punto objetivo establecido(valor) 
                 _destination = Physics.Raycast(ray, out RaycastHit hit) ? hit.point : ray.GetPoint(1000);
-
-                Instantiate(Bullet, FirePoint.position, Quaternion.identity);
-                CurrentAmmo = CurrentAmmo - 1;
+                Fire(FirePoint.position, transform.rotation);
             }
+        }
+
+        public void Fire(Vector3 position, Quaternion rotation /*Informacion del server*/)
+        {
+            GameObject bullet;
+            bullet = Instantiate(Bullet, position, Quaternion.identity);
+            CurrentAmmo = CurrentAmmo - 1;
+            bullet.GetComponent<Bullet>().InitializeBullet(rotation * Vector3.forward);
         }
 
         /// <summary>
@@ -105,6 +111,9 @@ namespace CTF
 
             }
         }
+
+        
+
     }
 }
 
