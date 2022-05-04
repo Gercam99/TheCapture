@@ -30,7 +30,7 @@ public class Waypoint : MonoBehaviour
     /// Cuando se haya acabado los segundos, el waypoint no estara ocupado y crearemos el power up.
     /// </summary>
     /// <returns></returns>
-    IEnumerator CooldownCoroutine()
+    private IEnumerator CooldownCoroutine()
     {   
         //Cuenta atras.
         yield return new WaitForSeconds(Cooldown);
