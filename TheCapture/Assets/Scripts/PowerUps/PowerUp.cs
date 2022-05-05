@@ -17,9 +17,13 @@ public class PowerUp : MonoBehaviour
     }
 
     [PunRPC]
-    public void Settings(Waypoint waypoint)
+    public void Settings(int id)
     {
+        if (id == null) return;
+        
+        Waypoint waypoint = Photon.Pun.PhotonView.Find(id).gameObject.GetComponent<Waypoint>();
         Waypoint = waypoint;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +32,8 @@ public class PowerUp : MonoBehaviour
         //y nanoseguidamente se destruira.
         if (other.CompareTag("Player"))
         {
+            Waypoint.StartCooldown();
+            WaypointSystem.Instance.CountPowerUps--;
             PhotonView.RPC("DestroyPowerUp", RpcTarget.AllViaServer);
         }
     }
@@ -35,7 +41,7 @@ public class PowerUp : MonoBehaviour
     [PunRPC]
     private void DestroyPowerUp()
     {
-        Waypoint.StartCooldown();
+
         Destroy(gameObject);
     }
     

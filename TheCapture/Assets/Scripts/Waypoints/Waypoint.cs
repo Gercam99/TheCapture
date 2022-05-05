@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class Waypoint : MonoBehaviour
+public class Waypoint : MonoBehaviour, IPunObservable
 {
     public bool IsBusy;
     public Vector3 Position;
@@ -19,14 +19,7 @@ public class Waypoint : MonoBehaviour
         //Para saber la posicion de casa waypoint.
         Position = transform.position;
     }
-
-    private void Start()
-    {
-        PhotonView = GetComponent<PhotonView>();
-    }
-
     
-    [PunRPC]
     /// <summary>
     /// Iniciamos la cuenta atras del tiempo de espera.
     /// </summary>
@@ -49,16 +42,25 @@ public class Waypoint : MonoBehaviour
         //Le damos el valor a la "booleana" a falso (no esta ocupada).
         IsBusy = false;
 
-        PhotonView.RPC("CallCreatePowerUp", RpcTarget.AllViaServer);
+        
+        //Creamos la funcion "CreatePowerUp"
+        WaypointSystem.Instance.CreatePowerUp();
+        //PhotonView.RPC("CallCreatePowerUp", RpcTarget.AllViaServer);
         
     }
 
-    [PunRPC]
-    private void CallCreatePowerUp()
-    {
-        //Creamos la funcion "CreatePowerUp"
-        WaypointSystem.Instance.CreatePowerUp();
-    }
+    public int GetID() => PhotonView.ViewID;
 
-   
+
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            stream.SendNext(IsBusy);
+        }
+        else
+        {
+            IsBusy = (bool) stream.ReceiveNext();
+        }
+    }
 }

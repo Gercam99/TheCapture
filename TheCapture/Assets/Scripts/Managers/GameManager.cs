@@ -97,7 +97,10 @@ namespace CTF.Managers
 
         public override void OnLeftRoom()
         {
-            SceneSystem.Instance.LoadScene("MainMenu", false);
+            if (SceneSystem.Instance != null)
+            {
+                SceneSystem.Instance.LoadScene("MainMenu", false);
+            }
         }
 
         public override void OnMasterClientSwitched(Player newMasterClient)
@@ -111,6 +114,8 @@ namespace CTF.Managers
             // {
             //     PhotonNetwork.LeaveRoom();
             // }
+            
+            PhotonNetwork.DestroyPlayerObjects(otherPlayer);
         }
         
         public void UpdateGameStats()

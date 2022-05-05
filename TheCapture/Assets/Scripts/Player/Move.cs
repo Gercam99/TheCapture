@@ -68,22 +68,25 @@ namespace CTF.PlayerController
             
             if(GameManager.finishGame)
                 return;
-            
-            isGrounded = Physics.CheckSphere(CheckGround.position, distanceGround, groundMask);
-            if ( isGrounded  && VelocityDown.y < 0)
+            if (transform != null)
             {
-                VelocityDown.y = -2;
+                isGrounded = Physics.CheckSphere(CheckGround.position, distanceGround, groundMask);
+                if ( isGrounded  && VelocityDown.y < 0)
+                {
+                    VelocityDown.y = -2;
+                }
+            
+                MoveController();
+            
+                if(Input.GetButtonDown("Jump") && isGrounded)
+                {
+                    VelocityDown.y = Mathf.Sqrt(jumpForce * -2 * Gravity);
+                }
+            
+                VelocityDown.y += Gravity * Time.deltaTime;
+                playerController.Move(VelocityDown * Time.deltaTime);
             }
-            
-            MoveController();
-            
-            if(Input.GetButtonDown("Jump") && isGrounded)
-            {
-                VelocityDown.y = Mathf.Sqrt(jumpForce * -2 * Gravity);
-            }
-            
-            VelocityDown.y += Gravity * Time.deltaTime;
-            playerController.Move(VelocityDown * Time.deltaTime);
+
 
 
         }

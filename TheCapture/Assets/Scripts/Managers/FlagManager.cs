@@ -20,6 +20,7 @@ namespace CTF.Managers
         private PhotonView photonView;
 
         public List<Transform> spawnPositions;
+        public string TeamFlag;
 
         private void Awake()
         {
@@ -47,6 +48,7 @@ namespace CTF.Managers
                     
                     Debug.Log(move.pv.Controller.GetPhotonTeam());
 
+                    if(move.pv.Controller.GetPhotonTeam().Name == TeamFlag) return;
                     photonView.RPC("CapturedGlobally", RpcTarget.AllViaServer,  move.pv.Controller.GetPhotonTeam().Name);
                 
             }
