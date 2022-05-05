@@ -176,7 +176,7 @@ namespace CTF.Managers
         
         public override void OnConnectedToMaster()
         {
-            Debug.LogError(PhotonNetwork.CloudRegion);
+            Debug.Log(PhotonNetwork.CloudRegion);
             SetActivePanel(selectionPanel.name);
         }
         
@@ -690,7 +690,7 @@ namespace CTF.Managers
                 object numPlayerInTeam;
                 if (player.CustomProperties.TryGetValue(PlayerCTF.PLAYER_NUM_TEAM, out numPlayerInTeam))
                 {
-                    Debug.LogError(player.NickName + "/" + player.GetPhotonTeam().Name + "/"+ int.Parse(numPlayerInTeam.ToString()) );
+                    Debug.Log(player.NickName + "/" + player.GetPhotonTeam().Name + "/"+ int.Parse(numPlayerInTeam.ToString()) );
                 }
             }
 

@@ -4,16 +4,10 @@
     <list default="true" id="bf7c7036-90e5-4d85-a851-b44f9bac4fcc" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCapture/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCapture/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP (1).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP (1).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP (2).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP (2).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP (3).prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP (3).prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MultiplayerScenes/CaptureFlag.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MultiplayerScenes/CaptureFlag.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Waypoints/WaypointSystem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Waypoints/WaypointSystem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MainMenuManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Waypoints/Waypoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Waypoints/Waypoint.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,7 +65,7 @@
       <option name="presentableId" value="Default" />
       <updated>1649092148637</updated>
       <workItem from="1649092171110" duration="2158000" />
-      <workItem from="1651766866212" duration="736000" />
+      <workItem from="1651766866212" duration="1940000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor WaypointSystem.cs">
       <created>1651693923553</created>
