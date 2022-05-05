@@ -11,9 +11,15 @@ public class PowerUp : MonoBehaviour, IPunObservable
     public Waypoint Waypoint;
 
 
-    private void Start()
+    private void Awake()
     {
         PhotonView = GetComponent<PhotonView>();
+    }
+
+    [PunRPC]
+    public void Settings(Waypoint waypoint)
+    {
+        Waypoint = waypoint;
     }
 
     private void OnTriggerEnter(Collider other)

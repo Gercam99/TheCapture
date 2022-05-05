@@ -79,7 +79,8 @@ public class WaypointSystem : MonoBehaviour
     {
         GameObject _powerUp = PhotonNetwork.Instantiate(powerUp.name, waypoint.Position, Quaternion.identity);
         //Assignacion del waypoint al power up.
-        _powerUp.GetComponent<PowerUp>().Waypoint = waypoint;
+        //_powerUp.GetComponent<PowerUp>().Waypoint = waypoint;
+        _powerUp.GetComponent<PhotonView>().RPC("Settings", RpcTarget.AllViaServer, waypoint);
         waypoint.IsBusy = true;
     }
     
