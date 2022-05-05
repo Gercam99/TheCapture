@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using ExtensionsUnity;
+using Photon.Pun;
 
 public class WaypointSystem : MonoBehaviour
 {
@@ -23,9 +24,13 @@ public class WaypointSystem : MonoBehaviour
     }
     private void Start()
     {
-        SetupPowerUps();
+        if (PhotonNetwork.LocalPlayer.IsMasterClient)
+        {
+            SetupPowerUps();
+        }
     }
 
+    [PunRPC]
     /// <summary>
     /// Esta funcion crea diferentes powerups, dentro de su maximo.
     /// </summary>
@@ -50,6 +55,8 @@ public class WaypointSystem : MonoBehaviour
         }
     }
     
+    
+    [PunRPC]
     /// <summary>
     /// Crea un solo power up en una posicion aleatoria dentro de un waypoint no ocupado.
     /// </summary>
@@ -62,6 +69,8 @@ public class WaypointSystem : MonoBehaviour
         InstantiatePowerUp(powerUp, waypoint);
     }
     
+    
+    [PunRPC]
     /// <summary>
     /// Crea la instancia del powerup asignando el waypoint y ocupando la posicion.
     /// </summary>
@@ -69,9 +78,12 @@ public class WaypointSystem : MonoBehaviour
     /// <param name="waypoint"></param>
     private void InstantiatePowerUp(PowerUp powerUp, Waypoint waypoint)
     {
-        PowerUp _powerUp = Instantiate(powerUp, waypoint.Position, Quaternion.identity);
+        GameObject _powerUp =PhotonNetwork.Instantiate(powerUp.name, waypoint.Position, Quaternion.identity);
         //Assignacion del waypoint al power up.
-        _powerUp.Waypoint = waypoint;
+        if(_powerUp.TryGetComponent(out PowerUp power ))
+        {
+            power.Waypoint = waypoint;
+        }
         waypoint.IsBusy = true;
     }
     
