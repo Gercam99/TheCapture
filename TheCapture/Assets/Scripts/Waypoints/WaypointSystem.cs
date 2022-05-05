@@ -70,7 +70,6 @@ public class WaypointSystem : MonoBehaviour
     }
     
     
-    [PunRPC]
     /// <summary>
     /// Crea la instancia del powerup asignando el waypoint y ocupando la posicion.
     /// </summary>
@@ -78,12 +77,9 @@ public class WaypointSystem : MonoBehaviour
     /// <param name="waypoint"></param>
     private void InstantiatePowerUp(PowerUp powerUp, Waypoint waypoint)
     {
-        GameObject _powerUp =PhotonNetwork.Instantiate(powerUp.name, waypoint.Position, Quaternion.identity);
+        GameObject _powerUp = PhotonNetwork.Instantiate(powerUp.name, waypoint.Position, Quaternion.identity);
         //Assignacion del waypoint al power up.
-        if(_powerUp.TryGetComponent(out PowerUp power ))
-        {
-            power.Waypoint = waypoint;
-        }
+        _powerUp.GetComponent<PowerUp>().Waypoint = waypoint;
         waypoint.IsBusy = true;
     }
     
