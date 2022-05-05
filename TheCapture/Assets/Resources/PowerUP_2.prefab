@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6d2d6044b99164bb8875e8b763d713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PhotonView: {fileID: 0}
   Waypoint: {fileID: 0}
 --- !u!135 &2577489946459396442
 SphereCollider:
