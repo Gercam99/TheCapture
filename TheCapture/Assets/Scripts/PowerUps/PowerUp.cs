@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Photon.Pun;
 using UnityEngine;
 
-public class PowerUp : MonoBehaviour, IPunObservable
+public class PowerUp : MonoBehaviour
 {
 
     public PhotonView PhotonView;
@@ -38,17 +38,5 @@ public class PowerUp : MonoBehaviour, IPunObservable
         Waypoint.StartCooldown();
         Destroy(gameObject);
     }
-
-
-    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
-    {
-        if (stream.IsWriting)
-        {
-            stream.SendNext(Waypoint);
-        }
-        else
-        {
-            Waypoint = (Waypoint) stream.ReceiveNext();
-        }
-    }
+    
 }

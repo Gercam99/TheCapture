@@ -17,10 +17,14 @@ public class WaypointSystem : MonoBehaviour
     public int MaxPowerUps;
 
 
+    private PhotonView _photonView;
+
+
     private void Awake()
     {
         //Le asignamos el singleton de Waypoint System.
         Instance = this;
+        _photonView = GetComponent<PhotonView>();
     }
     private void Start()
     {
@@ -51,7 +55,7 @@ public class WaypointSystem : MonoBehaviour
                 continue;
             }
 
-            InstantiatePowerUp(powerUp, waypoint);
+            _photonView.RPC("InstantiatePowerUp", RpcTarget.AllViaServer, powerUp, waypoint);
         }
     }
     
@@ -69,7 +73,7 @@ public class WaypointSystem : MonoBehaviour
         InstantiatePowerUp(powerUp, waypoint);
     }
     
-    
+    [PunRPC]
     /// <summary>
     /// Crea la instancia del powerup asignando el waypoint y ocupando la posicion.
     /// </summary>
