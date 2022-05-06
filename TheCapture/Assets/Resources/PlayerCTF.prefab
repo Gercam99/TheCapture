@@ -177,6 +177,8 @@ GameObject:
   - component: {fileID: 8037027917024521121}
   - component: {fileID: 9190724037520137379}
   - component: {fileID: 1828067454019254411}
+  - component: {fileID: 3179894054156938373}
+  - component: {fileID: 6005913952995270740}
   m_Layer: 6
   m_Name: PlayerCTF
   m_TagString: Player
@@ -269,10 +271,6 @@ MonoBehaviour:
     m_Bits: 1
   distanceGround: 0.5
   jumpForce: 3
-  destroyObjects:
-  - {fileID: 8037027915809444063}
-  - {fileID: 8037027915670752261}
-  destroyComponents: []
   pv: {fileID: 0}
 --- !u!143 &8037027917024521121
 CharacterController:
@@ -331,3 +329,32 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &3179894054156938373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037027917024521122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2125f6961b5043a69369c94dc24e4acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destroyObjects:
+  - {fileID: 8037027915809444063}
+  - {fileID: 8037027915670752261}
+  destroyComponents: []
+--- !u!114 &6005913952995270740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8037027917024521122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b0726434744bd1bdd983439e1ea7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PowerUpData: {fileID: 0}

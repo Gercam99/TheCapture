@@ -1,48 +1,60 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CTF.Inventory;
+using CTF.PlayerController;
 using Photon.Pun;
 using UnityEngine;
+using WaypointController;
 
-public class PowerUp : MonoBehaviour
+
+namespace PowerUps
 {
-
-    public PhotonView PhotonView;
-    public Waypoint Waypoint;
-
-
-    private void Awake()
+    public class PowerUp : MonoBehaviour
     {
-        PhotonView = GetComponent<PhotonView>();
-    }
 
-    [PunRPC]
-    public void Settings(int id)
-    {
-        if (id == null) return;
-        
-        Waypoint waypoint = Photon.Pun.PhotonView.Find(id).gameObject.GetComponent<Waypoint>();
-        Waypoint = waypoint;
+        public PowerUpData PowerUpData;
+        public PhotonView PhotonView;
+        public Waypoint Waypoint;
 
-    }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        //Compara el "tag" y si es el del player comenzara la funcion "StartCooldown
-        //y nanoseguidamente se destruira.
-        if (other.CompareTag("Player"))
+        private void Awake()
         {
-            Waypoint.StartCooldown();
-            WaypointSystem.Instance.CountPowerUps--;
-            PhotonView.RPC("DestroyPowerUp", RpcTarget.AllViaServer);
+            PhotonView = GetComponent<PhotonView>();
         }
-    }
 
-    [PunRPC]
-    private void DestroyPowerUp()
-    {
+        [PunRPC]
+        public void Settings(int id)
+        {
+            if (id == null) return;
+        
+            Waypoint waypoint = Photon.Pun.PhotonView.Find(id).gameObject.GetComponent<Waypoint>();
+            Waypoint = waypoint;
 
-        Destroy(gameObject);
-    }
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            //Compara el "tag" y si es el del player comenzara la funcion "StartCooldown
+            //y nanoseguidamente se destruira.
+
+            if (other.TryGetComponent(out InventoryController inventory))
+            {
+                if (inventory.HasPowerUp()) return;
+                Waypoint.StartCooldown();
+                WaypointSystem.Instance.CountPowerUps--;
+                inventory.PowerUpData = PowerUpData;
+                PhotonView.RPC("DestroyPowerUp", RpcTarget.AllViaServer);
+            }
+
+        }
+
+        [PunRPC]
+        private void DestroyPowerUp()
+        {
+            Destroy(gameObject);
+        }
     
+    }
+
 }

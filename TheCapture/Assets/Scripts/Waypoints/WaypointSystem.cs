@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using ExtensionsUnity;
 using Photon.Pun;
+using PowerUps;
 
-public class WaypointSystem : MonoBehaviour, IPunObservable
+namespace WaypointController
+{
+    public class WaypointSystem : MonoBehaviour, IPunObservable
 {
     //Singleton del Script WaypointSystem.
     public static WaypointSystem Instance { get; private set; }
@@ -77,18 +80,21 @@ public class WaypointSystem : MonoBehaviour, IPunObservable
     /// </summary>
     public void CreatePowerUp()
     {
-        if(CountPowerUps >= MaxPowerUps) return;
+        if (CountPowerUps < MaxPowerUps)
+        {
+            Waypoints.Shuffle();
+            PowerUp powerUp = PowerUps.Random();
+            var waypoint = SetWaypoint();
         
-        Waypoints.Shuffle();
-        PowerUp powerUp = PowerUps.Random();
-        var waypoint = SetWaypoint();
+            GameObject _powerUp = PhotonNetwork.InstantiateRoomObject(powerUp.name, waypoint.Position, Quaternion.identity);
+            //Assignacion del waypoint al power up.
+            //_powerUp.GetComponent<PowerUp>().Waypoint = waypoint;
+            _powerUp.GetComponent<PhotonView>().RPC("Settings", RpcTarget.AllViaServer, waypoint.GetID());
+            CountPowerUps++;
+            waypoint.IsBusy = true;
+        }
         
-        GameObject _powerUp = PhotonNetwork.InstantiateRoomObject(powerUp.name, waypoint.Position, Quaternion.identity);
-        //Assignacion del waypoint al power up.
-        //_powerUp.GetComponent<PowerUp>().Waypoint = waypoint;
-        _powerUp.GetComponent<PhotonView>().RPC("Settings", RpcTarget.AllViaServer, waypoint.GetID());
-        CountPowerUps++;
-        waypoint.IsBusy = true;
+
     }
     
     
@@ -127,3 +133,5 @@ public class WaypointSystem : MonoBehaviour, IPunObservable
         }
     }
 }
+}
+

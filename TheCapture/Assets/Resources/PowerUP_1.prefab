@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6d2d6044b99164bb8875e8b763d713, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PowerUpData: {fileID: 11400000, guid: 229bdaa025db5a74ea55202c9d6ff01e, type: 2}
   PhotonView: {fileID: 3212380057490278588}
   Waypoint: {fileID: 0}
 --- !u!135 &2677490827227138446

@@ -17,7 +17,8 @@ namespace CTF.Managers
     public class GameManager : MonoBehaviourPunCallbacks
     {
         public static GameManager Instance { get; private set; }
-        public Text InfoText;
+        public Text WinText;
+        public TextMeshProUGUI InfoText;
         public List<Transform> spawnPointsRed = new List<Transform>();
         public List<Transform> spawnPointsBlue = new List<Transform>();
         [SerializeField] private GameObject cam;
@@ -55,7 +56,7 @@ namespace CTF.Managers
             };
             PhotonNetwork.LocalPlayer.SetCustomProperties(props);
 
-            InfoText.text = "Waiting to other players...";
+            WinText.text = "Waiting to other players...";
             
             
             exitButton.onClick.AddListener(()=>PhotonNetwork.LeaveRoom());
@@ -133,10 +134,10 @@ namespace CTF.Managers
         public override void OnPlayerPropertiesUpdate(Player targetPlayer, Hashtable changedProps)
         {
 
-            if (changedProps.ContainsKey(PlayerCTF.CAPTURED_THE_FLAG))
-            {
-                return;
-            }
+            // if (changedProps.ContainsKey(PlayerCTF.CAPTURED_THE_FLAG))
+            // {
+            //     return;
+            // }
 
             if (!PhotonNetwork.IsMasterClient)
             {
@@ -160,8 +161,8 @@ namespace CTF.Managers
                 }
                 else
                 {
-                    Debug.Log("Setting text waiting for players", this.InfoText);
-                    InfoText.text = "Waiting for other players...";
+                    Debug.Log("Setting text waiting for players", this.WinText);
+                    WinText.text = "Waiting for other players...";
                 }
             }
         }
@@ -205,7 +206,7 @@ namespace CTF.Managers
 
             while (timer > 0.0f)
             {
-                InfoText.text = $"{winner} won. Returning to login screen in{timer:n2}";
+                WinText.text = $"{winner} won. Returning to login screen in{timer:n2}";
 
                 yield return new WaitForEndOfFrame();
 
@@ -295,6 +296,19 @@ namespace CTF.Managers
         {
             blueScoreText.text = blueScore.ToString();
             redScoreText.text = redScore.ToString();
+        }
+
+        [PunRPC]
+        public void ShowInfoText(string message)
+        {
+            InfoText.text = message;
+            StartCoroutine(DisableInfoText());
+        }
+
+        private IEnumerator DisableInfoText()
+        {
+            yield return new WaitForSeconds(5);
+            InfoText.text = String.Empty;
         }
     }
 }

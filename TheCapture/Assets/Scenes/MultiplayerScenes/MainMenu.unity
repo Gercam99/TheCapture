@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1946,6 +1946,7 @@ MonoBehaviour:
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
   FeedbacksIntensity: 1
   Events:
     TriggerMMFeedbacksEvents: 0
@@ -1983,9 +1984,10 @@ MonoBehaviour:
   Chance: 100
   Timing:
     TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
     InitialDelay: 0
     CooldownDuration: 0
-    ExcludeFromHoldingPauses: 0
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
@@ -7039,6 +7041,7 @@ MonoBehaviour:
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
   FeedbacksIntensity: 1
   Events:
     TriggerMMFeedbacksEvents: 0
@@ -9926,9 +9929,10 @@ MonoBehaviour:
   Chance: 100
   Timing:
     TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
     InitialDelay: 0
     CooldownDuration: 0
-    ExcludeFromHoldingPauses: 0
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
@@ -10006,6 +10010,7 @@ MonoBehaviour:
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
   FeedbacksIntensity: 1
   Events:
     TriggerMMFeedbacksEvents: 0
@@ -10236,7 +10241,7 @@ MonoBehaviour:
     IsHidden: 0
 --- !u!4 &1414592758
 Transform:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -10532,6 +10537,7 @@ MonoBehaviour:
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
   FeedbacksIntensity: 1
   Events:
     TriggerMMFeedbacksEvents: 0
@@ -10569,9 +10575,10 @@ MonoBehaviour:
   Chance: 100
   Timing:
     TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
     InitialDelay: 0
     CooldownDuration: 0
-    ExcludeFromHoldingPauses: 0
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
@@ -10716,9 +10723,10 @@ MonoBehaviour:
   Chance: 100
   Timing:
     TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
     InitialDelay: 0.2
     CooldownDuration: 0
-    ExcludeFromHoldingPauses: 0
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
@@ -10788,9 +10796,10 @@ MonoBehaviour:
   Chance: 100
   Timing:
     TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
     InitialDelay: 0
     CooldownDuration: 0
-    ExcludeFromHoldingPauses: 0
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
@@ -13117,9 +13126,10 @@ MonoBehaviour:
   Chance: 100
   Timing:
     TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
     InitialDelay: 0
     CooldownDuration: 0
-    ExcludeFromHoldingPauses: 0
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
@@ -13857,9 +13867,10 @@ MonoBehaviour:
   Chance: 100
   Timing:
     TimescaleMode: 0
+    ExcludeFromHoldingPauses: 0
+    ContributeToTotalDuration: 1
     InitialDelay: 0
     CooldownDuration: 0
-    ExcludeFromHoldingPauses: 0
     InterruptsOnStop: 1
     NumberOfRepeats: 0
     RepeatForever: 0
@@ -13937,6 +13948,7 @@ MonoBehaviour:
   CooldownDuration: 0
   InitialDelay: 0
   CanPlayWhileAlreadyPlaying: 1
+  ChanceToPlay: 100
   FeedbacksIntensity: 1
   Events:
     TriggerMMFeedbacksEvents: 0

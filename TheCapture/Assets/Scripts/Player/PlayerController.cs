@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using CTF.Inventory;
 using CTF.Managers;
 using Photon.Pun;
 using Photon.Pun.UtilityScripts;
@@ -8,7 +9,7 @@ using UnityEngine;
 
 namespace CTF.PlayerController
 {
-    public class Move : MonoBehaviour
+    public class PlayerController : MonoBehaviour
     {
         [Header("MOVE PARAMETERS")]
         [Tooltip("Variable para asignar la velocidad")] 
@@ -25,15 +26,14 @@ namespace CTF.PlayerController
         public float distanceGround;
         [Tooltip("Variable encargada de ejercer una fuerza de salto")]
         public float jumpForce;
+        
 
         private CharacterController playerController;
         private bool isGrounded;
         private Vector3 VelocityDown;
         private Vector3 _move;
-
-        public GameObject[] destroyObjects;
-        public Component[] destroyComponents;
-
+        private InventoryController _inventory;
+        
         public PhotonView pv;
 
 
@@ -41,61 +41,38 @@ namespace CTF.PlayerController
         {
             playerController = GetComponent<CharacterController>();
             pv = GetComponent<PhotonView>();
+            _inventory = GetComponent<InventoryController>();
         }
 
         private void Start()
         {
             Debug.Log(pv.Controller.NickName + pv.Controller.GetPhotonTeam());
-
-            if (!pv.IsMine)
-            {
-                foreach (var objects in destroyObjects)
-                {
-                    Destroy(objects);
-                }
-
-                foreach (var component in destroyComponents)
-                {
-                    Destroy(component);
-                }
-            }
         }
 
         private void Update()
         {
-            if(!pv.IsMine)
+            if (!pv.IsMine)
                 return;
-            
-            if(GameManager.finishGame)
+
+            if (GameManager.finishGame)
                 return;
-            if (transform != null)
+
+            isGrounded = Physics.CheckSphere(CheckGround.position, distanceGround, groundMask);
+            if (isGrounded && VelocityDown.y < 0)
             {
-                isGrounded = Physics.CheckSphere(CheckGround.position, distanceGround, groundMask);
-                if ( isGrounded  && VelocityDown.y < 0)
-                {
-                    VelocityDown.y = -2;
-                }
-            
-                MoveController();
-            
-                if(Input.GetButtonDown("Jump") && isGrounded)
-                {
-                    VelocityDown.y = Mathf.Sqrt(jumpForce * -2 * Gravity);
-                }
-            
-                VelocityDown.y += Gravity * Time.deltaTime;
-                playerController.Move(VelocityDown * Time.deltaTime);
+                VelocityDown.y = -2;
             }
 
-
-
+            MoveInput();
+            PowerUpInput();
         }
+
         
-        
+
         /// <summary>
         /// Funcion encargada de mover el personaje por los axis
         /// </summary>
-        private void MoveController()
+        private void MoveInput()
         {
             float horizontalMovement = Input.GetAxis("Horizontal");
             float verticalMovement = Input.GetAxis("Vertical");
@@ -103,6 +80,30 @@ namespace CTF.PlayerController
             _move = transform.right * horizontalMovement + transform.forward * verticalMovement;
             _move = Vector3.ClampMagnitude(_move, 1f);
             playerController.Move(_move * speed * Time.deltaTime);
+            
+            JumpInput();
+        }
+        
+        private void JumpInput()
+        {
+            if (Input.GetButtonDown("Jump") && isGrounded)
+            {
+                VelocityDown.y = Mathf.Sqrt(jumpForce * -2 * Gravity);
+            }
+
+            VelocityDown.y += Gravity * Time.deltaTime;
+            playerController.Move(VelocityDown * Time.deltaTime);
+        }
+
+        private void PowerUpInput()
+        {
+            if(_inventory.HasPowerUp() == false) return;
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                // Use powerup
+                _inventory.PowerUpData = null;
+            }
         }
     }
 }
