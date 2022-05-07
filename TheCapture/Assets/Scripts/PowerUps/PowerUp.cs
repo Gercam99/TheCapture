@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using CTF.Inventory;
 using CTF.PlayerController;
+using ExtensionsUnity;
 using Photon.Pun;
 using UnityEngine;
 using WaypointController;
@@ -26,9 +28,7 @@ namespace PowerUps
         [PunRPC]
         public void Settings(int id)
         {
-            if (id == null) return;
-        
-            Waypoint waypoint = Photon.Pun.PhotonView.Find(id).gameObject.GetComponent<Waypoint>();
+            var waypoint = WaypointSystem.Instance.WaypointDictionary.KeyByValue(id);
             Waypoint = waypoint;
 
         }

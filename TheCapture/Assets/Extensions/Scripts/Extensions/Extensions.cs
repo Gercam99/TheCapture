@@ -338,6 +338,14 @@ namespace ExtensionsUnity
 
     #endregion
 
+    #region DictionaryExtensions
+
+    public static T KeyByValue<T, W>(this Dictionary<T, W> dictionary, int value)
+    {
+        return dictionary.FirstOrDefault(x => Equals(x.Value, value)).Key;
+    }
+    #endregion
+
 }
 }
 

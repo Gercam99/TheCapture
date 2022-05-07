@@ -23,6 +23,7 @@ namespace WaypointController
 
 
     private PhotonView _photonView;
+    public Dictionary<Waypoint, int> WaypointDictionary = new Dictionary<Waypoint, int>();
 
 
     private void Awake()
@@ -32,6 +33,11 @@ namespace WaypointController
     }
     private void Start()
     {
+        WaypointDictionary.Clear();
+        foreach (var waypoint in Waypoints)
+        {
+            WaypointDictionary.Add(waypoint, waypoint.GetID());
+        }
         
         _photonView = GetComponent<PhotonView>();
         if (PhotonNetwork.LocalPlayer.IsMasterClient)

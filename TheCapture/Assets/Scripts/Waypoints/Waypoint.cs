@@ -28,7 +28,7 @@ namespace WaypointController
         /// </summary>
         public void StartCooldown()
         {
-            Debug.Log("HOLAAAAAA");
+            Debug.Log("Start Cooldown Waypoint");
             //Iniciamos la "coroutine".
             StartCoroutine(CooldownCoroutine());
         }
@@ -48,8 +48,7 @@ namespace WaypointController
             
             //Creamos la funcion "CreatePowerUp"
             WaypointSystem.Instance.CreatePowerUp();
-            //PhotonView.RPC("CallCreatePowerUp", RpcTarget.AllViaServer);
-            
+
         }
     
         public int GetID() => PhotonView.ViewID;
