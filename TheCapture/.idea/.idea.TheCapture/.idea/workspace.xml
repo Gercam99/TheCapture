@@ -2,12 +2,34 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf7c7036-90e5-4d85-a851-b44f9bac4fcc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HUDManager.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HUDManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCapture/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCapture/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Photon/PhotonUnityNetworking/Resources/PhotonServerSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerCTF.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerCTF.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PowerUP_3.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MultiplayerScenes/CaptureFlag.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MultiplayerScenes/CaptureFlag.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/MainMenuManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/MainMenuManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/PowerUps/PowerUp.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Waypoints/Waypoint.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Waypoints/Waypoint.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BaseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BaseManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/InputField_frame_activity.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/InputField_frame_activity.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/background_00_title_2560.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/background_00_title_2560.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/background_gradient_00.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/background_gradient_00.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/background_panel_top_gradient.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/background_panel_top_gradient.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_icon_arrow_down.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_icon_arrow_down.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_gray.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_gray.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_green.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_rectangle_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_rectangle_02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/icon_color_check_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/icon_color_check_02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/icon_color_network_error.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/icon_color_network_error.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/icon_white_close.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/icon_white_close.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/label_tag_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/label_tag_02.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/popup_01_frame.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/popup_01_frame.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/popup_middlel_001.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/popup_middlel_001.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_03_fill_area.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_03_fill_area.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_fill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_fill.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_frame.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_frame.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_icon1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_icon1.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,7 +43,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="27LGpbwCm6mtcTzmHiaIwGvKZc9" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -35,6 +59,14 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Build/TheCapture/TheCapture.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Build\TheCapture" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
     <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
@@ -66,6 +98,7 @@
       <updated>1649092148637</updated>
       <workItem from="1649092171110" duration="2158000" />
       <workItem from="1651766866212" duration="1940000" />
+      <workItem from="1652893641106" duration="4381000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor WaypointSystem.cs">
       <created>1651693923553</created>

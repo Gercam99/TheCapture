@@ -23,7 +23,6 @@ namespace CTF.Managers
                     if ((bool)capturedTheFlag)
                     {
                         FlagManager.PhotonView.RPC("FlagToBase", RpcTarget.AllViaServer, player.pv.Controller.GetPhotonTeam().Name);
-                        //FlagManager.FlagToBase( player.pv.Controller.GetPhotonTeam().Name);
                         player.pv.Controller.SetCustomProperties(new Hashtable {{PlayerCTF.CAPTURED_THE_FLAG, false}});
                     }
                 }
