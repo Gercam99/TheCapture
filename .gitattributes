@@ -2,3 +2,4 @@
 * text=auto
 CaptureFlagTest.unity filter=lfs diff=lfs merge=lfs -text
 CaptureFlag.unity filter=lfs diff=lfs merge=lfs -text
+Backend.zip filter=lfs diff=lfs merge=lfs -text
