@@ -345,6 +345,36 @@ namespace ExtensionsUnity
         return dictionary.FirstOrDefault(x => Equals(x.Value, value)).Key;
     }
     #endregion
+    
+    #region DebugExtensions
+
+    public static void DebugColor(string message, Color color)
+    {
+        string hexColor = GetStringFromColor(color);
+        Debug.Log($"<color=#{hexColor}>{message}</color>");
+    }
+
+    public static void DebugColor(string message, string colorName)
+    {
+        Debug.Log($"<color={colorName}>{message}</color>");
+    }
+
+    #endregion
+
+    #region Cursor
+
+    public static void ShowCursor()
+    {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public static void HideCursor()
+    {
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+    #endregion
 
 }
 }

@@ -2,34 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bf7c7036-90e5-4d85-a851-b44f9bac4fcc" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HUDManager.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HUDManager.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TheCapture/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TheCapture/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PlayerCTF.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PlayerCTF.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/PowerUP_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/PowerUP_3.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MultiplayerScenes/CaptureFlag.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MultiplayerScenes/CaptureFlag.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/BaseManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/BaseManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/InputField_frame_activity.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/InputField_frame_activity.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/background_00_title_2560.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/background_00_title_2560.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/background_gradient_00.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/background_gradient_00.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/background_panel_top_gradient.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/background_panel_top_gradient.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_icon_arrow_down.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_icon_arrow_down.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_gray.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_gray.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_rectangle_01_n_green.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/btn_rectangle_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/btn_rectangle_02.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/icon_color_check_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/icon_color_check_02.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/icon_color_network_error.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/icon_color_network_error.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/icon_white_close.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/icon_white_close.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/label_tag_02.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/label_tag_02.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/popup_01_frame.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/popup_01_frame.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/popup_middlel_001.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/popup_middlel_001.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_03_fill_area.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_03_fill_area.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_fill.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_fill.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_frame.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_frame.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_icon1.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/UI/slider_icontype_05_icon1.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/QualitySettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/RiderScriptEditorPersistedState.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Extensions/Scripts/Extensions/Extensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Extensions/Scripts/Extensions/Extensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/HUDManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/HUDManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +17,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://F:/SAE/Unity/TutorialHOH/Assets/Scripts/Extensions.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -99,6 +81,7 @@
       <workItem from="1649092171110" duration="2158000" />
       <workItem from="1651766866212" duration="1940000" />
       <workItem from="1652893641106" duration="4381000" />
+      <workItem from="1663339193782" duration="531000" />
     </task>
     <task id="LOCAL-00001" summary="Refactor WaypointSystem.cs">
       <created>1651693923553</created>
