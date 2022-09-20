@@ -3,6 +3,9 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+#if ENABLE_INPUT_SYSTEM
+using UnityEngine.InputSystem;
+#endif
 
 namespace MoreMountains.Tools
 {	
@@ -45,25 +48,25 @@ namespace MoreMountains.Tools
 			SwipeDuration = swipeDuration;
 		}
 
-        static MMSwipeEvent e;
-        public static void Trigger(MMPossibleSwipeDirections direction, float angle, float length, Vector2 origin, Vector2 destination, float swipeDuration)
-        {
-            e.SwipeDirection = direction;
-            e.SwipeAngle = angle;
-            e.SwipeLength = length;
-            e.SwipeOrigin = origin;
-            e.SwipeDestination = destination;
-            e.SwipeDuration = swipeDuration;
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static MMSwipeEvent e;
+		public static void Trigger(MMPossibleSwipeDirections direction, float angle, float length, Vector2 origin, Vector2 destination, float swipeDuration)
+		{
+			e.SwipeDirection = direction;
+			e.SwipeAngle = angle;
+			e.SwipeLength = length;
+			e.SwipeOrigin = origin;
+			e.SwipeDestination = destination;
+			e.SwipeDuration = swipeDuration;
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 
-    /// <summary>
-    /// Add a swipe manager to your scene, and it'll trigger MMSwipeEvents everytime a swipe happens. From its inspector you can determine the minimal length of a swipe. Shorter swipes will be ignored
-    /// </summary>
+	/// <summary>
+	/// Add a swipe manager to your scene, and it'll trigger MMSwipeEvents everytime a swipe happens. From its inspector you can determine the minimal length of a swipe. Shorter swipes will be ignored
+	/// </summary>
 	[RequireComponent(typeof(RectTransform))]
-    [AddComponentMenu("More Mountains/Tools/Controls/MMSwipeZone")]
-    public class MMSwipeZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
+	[AddComponentMenu("More Mountains/Tools/Controls/MMSwipeZone")]
+	public class MMSwipeZone : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 	{
 		/// the minimal length of a swipe
 		public float MinimalSwipeLength = 50f;
@@ -86,9 +89,9 @@ namespace MoreMountains.Tools
 		protected Vector2 _destination;
 		protected Vector2 _deltaSwipe;
 		protected MMPossibleSwipeDirections _swipeDirection;
-        protected float _lastPointerUpAt = 0f;
-        protected float _swipeStartedAt = 0f;
-        protected float _swipeEndedAt = 0f;
+		protected float _lastPointerUpAt = 0f;
+		protected float _swipeStartedAt = 0f;
+		protected float _swipeEndedAt = 0f;
 
 		protected virtual void Swipe()
 		{
@@ -114,7 +117,11 @@ namespace MoreMountains.Tools
 		/// </summary>
 		public virtual void OnPointerDown(PointerEventData data)
 		{
+			#if ENABLE_INPUT_SYSTEM
+			_firstTouchPosition = Mouse.current.position.ReadValue();
+			#else
 			_firstTouchPosition = Input.mousePosition;
+			#endif
 			_swipeStartedAt = Time.unscaledTime;
 		}
 
@@ -123,12 +130,16 @@ namespace MoreMountains.Tools
 		/// </summary>
 		public virtual void OnPointerUp(PointerEventData data)
 		{
-            if (Time.frameCount == _lastPointerUpAt)
-            {
-                return;
-            }
+			if (Time.frameCount == _lastPointerUpAt)
+			{
+				return;
+			}
 
+			#if ENABLE_INPUT_SYSTEM
+            _destination = Mouse.current.position.ReadValue();
+			#else
 			_destination = Input.mousePosition;
+			#endif
 			_deltaSwipe = _destination - _firstTouchPosition;
 			_length = _deltaSwipe.magnitude;
 
@@ -147,8 +158,8 @@ namespace MoreMountains.Tools
 				Press ();
 			}
 
-            _lastPointerUpAt = Time.frameCount;
-        }
+			_lastPointerUpAt = Time.frameCount;
+		}
 
 		/// <summary>
 		/// Triggers the bound pointer enter action when touch enters zone

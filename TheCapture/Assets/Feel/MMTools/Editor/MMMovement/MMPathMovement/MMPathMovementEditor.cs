@@ -41,7 +41,7 @@ namespace MoreMountains.Tools
 		/// OnSceneGUI, draws repositionable handles at every point in the path, for easier setup
 		/// </summary>
 		protected virtual void OnSceneGUI()
-	    {
+		{
 			Handles.color=Color.green;
 			MMPathMovement t = (target as MMPathMovement);
 
@@ -52,13 +52,13 @@ namespace MoreMountains.Tools
 
 			for (int i=0;i<t.PathElements.Count;i++)
 			{
-	       		EditorGUI.BeginChangeCheck();
+				EditorGUI.BeginChangeCheck();
 
 				Vector3 oldPoint = t.GetOriginalTransformPosition()+t.PathElements[i].PathElementPosition;
 				GUIStyle style = new GUIStyle();
 
 				// draws the path item number
-		        style.normal.textColor = Color.yellow;	 
+				style.normal.textColor = Color.yellow;	 
 				Handles.Label(t.GetOriginalTransformPosition()+t.PathElements[i].PathElementPosition+(Vector3.down*0.4f)+(Vector3.right*0.4f), ""+i,style);
 
 				// draws a movable handle
@@ -66,12 +66,12 @@ namespace MoreMountains.Tools
 
 				// records changes
 				if (EditorGUI.EndChangeCheck())
-		        {
-		            Undo.RecordObject(target, "Free Move Handle");
+				{
+					Undo.RecordObject(target, "Free Move Handle");
 					t.PathElements[i].PathElementPosition = newPoint - t.GetOriginalTransformPosition();
-		        }
+				}
 			}	        
-	    }
+		}
 	}
 }
 

@@ -140,11 +140,11 @@ namespace MoreMountains.Tools
 			list.isExpanded = true;
 			label = new GUIContent(list.displayName);
 
-#if UNITY_5_6_OR_NEWER
+			#if UNITY_5_6_OR_NEWER
 			verticalSpacing = EditorGUIUtility.standardVerticalSpacing;
-#else
+			#else
 			verticalSpacing = 2f;
-#endif
+			#endif
 			headerHeight = 18f;
 			footerHeight = 13f;
 			slideEasing = 0.15f;
@@ -1896,18 +1896,18 @@ namespace MoreMountains.Tools
 
 			internal static Object ValidateObjectDragAndDrop(Object[] references, SerializedProperty property) {
 
-#if UNITY_2017_1_OR_NEWER
+				#if UNITY_2017_1_OR_NEWER
 				dragDropValidationParams = GetParams(ref dragDropValidationParams, 4);
 				dragDropValidationParams[0] = references;
 				dragDropValidationParams[1] = null;
 				dragDropValidationParams[2] = property;
 				dragDropValidationParams[3] = 0;
-#else
+				#else
 				dragDropValidationParams = GetParams(ref dragDropValidationParams, 3);
 				dragDropValidationParams[0] = references;
 				dragDropValidationParams[1] = null;
 				dragDropValidationParams[2] = property;
-#endif
+				#endif
 				return dragDropValidation.Invoke(null, dragDropValidationParams) as Object;
 			}
 
@@ -1930,4 +1930,3 @@ namespace MoreMountains.Tools
 		}
 	}
 }
- 

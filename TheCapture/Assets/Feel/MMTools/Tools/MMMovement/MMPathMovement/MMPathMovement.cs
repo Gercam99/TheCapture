@@ -5,11 +5,11 @@ using MoreMountains.Tools;
 
 namespace MoreMountains.Tools
 {
-    /// <summary>
-    /// Add this component to an object and it'll be able to move along a path defined from its inspector.
-    /// </summary>
-    [AddComponentMenu("More Mountains/Tools/Movement/MMPathMovement")]
-    public class MMPathMovement : MonoBehaviour 
+	/// <summary>
+	/// Add this component to an object and it'll be able to move along a path defined from its inspector.
+	/// </summary>
+	[AddComponentMenu("More Mountains/Tools/Movement/MMPathMovement")]
+	public class MMPathMovement : MonoBehaviour 
 	{
 		/// the possible movement types
 		public enum PossibleAccelerationType
@@ -25,8 +25,8 @@ namespace MoreMountains.Tools
 			BackAndForth,
 			Loop,
 			OnlyOnce,
-            StopAtBounds,
-            Random
+			StopAtBounds,
+			Random
 		}
 
 		/// the possible movement directions
@@ -36,12 +36,12 @@ namespace MoreMountains.Tools
 			Descending
 		}
 
-        public enum UpdateModes
-        {
-            Update,
-            FixedUpdate,
-            LateUpdate
-        }
+		public enum UpdateModes
+		{
+			Update,
+			FixedUpdate,
+			LateUpdate
+		}
 
 		[Header("Path")]
 		[MMInformation("Here you can select the '<b>Cycle Option</b>'. Back and Forth will have your object follow the path until its end, and go back to the original point. If you select Loop, the path will be closed and the object will move along it until told otherwise. If you select Only Once, the object will move along the path from the first to the last point, and remain there forever.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
@@ -63,10 +63,10 @@ namespace MoreMountains.Tools
 		public PossibleAccelerationType AccelerationType = PossibleAccelerationType.ConstantSpeed;
 		/// the acceleration to apply to an object traveling between two points of the path. 
 		public AnimationCurve Acceleration = new AnimationCurve(new Keyframe(0,1f),new Keyframe(1f,0f));
-        /// the chosen update mode (update, fixed update, late update)
-        public UpdateModes UpdateMode = UpdateModes.Update;
+		/// the chosen update mode (update, fixed update, late update)
+		public UpdateModes UpdateMode = UpdateModes.Update;
 
-        [Header("Settings")]
+		[Header("Settings")]
 		[MMInformation("The <b>MinDistanceToGoal</b> is used to check if we've (almost) reached a point in the Path. The 2 other settings here are for debug only, don't change them.",MoreMountains.Tools.MMInformationAttribute.InformationType.Info,false)]
 		/// the minimum distance to a point at which we'll arbitrarily decide the point's been reached
 		public float MinDistanceToGoal = .1f;
@@ -74,55 +74,57 @@ namespace MoreMountains.Tools
 		protected Vector3 _originalTransformPosition;
 		/// internal flag, hidden and shouldn't be accessed
 		protected bool _originalTransformPositionStatus=false;
-        /// if this is true, the object can move along the path
-        public virtual bool CanMove { get; set; }
+		/// if this is true, the object can move along the path
+		public virtual bool CanMove { get; set; }
         
-        protected bool _active=false;
-	    protected IEnumerator<Vector3> _currentPoint;
+		protected bool _active=false;
+		protected IEnumerator<Vector3> _currentPoint;
 		protected int _direction = 1;
 		protected Vector3 _initialPosition;
-	    protected Vector3 _finalPosition;
+		protected Vector3 _finalPosition;
 		protected Vector3 _previousPoint = Vector3.zero;
-	    protected float _waiting=0;
-	    protected int _currentIndex;
+		protected float _waiting=0;
+		protected int _currentIndex;
 		protected float _distanceToNextPoint;
 		protected bool _endReached = false;
+		protected Vector3 _positionLastFrame;
+		protected Vector3 _vector3Zero = Vector3.zero;
 
 		/// <summary>
-	    /// Initialization
-	    /// </summary>
-	    protected virtual void Awake ()
+		/// Initialization
+		/// </summary>
+		protected virtual void Awake ()
 		{
 			Initialization ();
 		}
 
-        /// <summary>
-        /// On Start we store our initial position
-        /// </summary>
-        protected virtual void Start()
-        {
-            _originalTransformPosition = transform.position;
-        }
+		/// <summary>
+		/// On Start we store our initial position
+		/// </summary>
+		protected virtual void Start()
+		{
+			_originalTransformPosition = transform.position;
+		}
 
-        /// <summary>
-        /// A public method you can call to reset the path
-        /// </summary>
-        public virtual void ResetPath()
-        {
-            Initialization();
-            CanMove = false;
-            transform.position = _originalTransformPosition;
-        }
+		/// <summary>
+		/// A public method you can call to reset the path
+		/// </summary>
+		public virtual void ResetPath()
+		{
+			Initialization();
+			CanMove = false;
+			transform.position = _originalTransformPosition;
+		}
 
-        /// <summary>
-        /// Flag inits, initial movement determination, and object positioning
-        /// </summary>
-        protected virtual void Initialization()
+		/// <summary>
+		/// Flag inits, initial movement determination, and object positioning
+		/// </summary>
+		protected virtual void Initialization()
 		{
 			// on Start, we set our active flag to true
 			_active=true;
 			_endReached = false;
-            CanMove = true;
+			CanMove = true;
 
 			// if the path is null we exit
 			if(PathElements == null || PathElements.Count < 1)
@@ -154,45 +156,45 @@ namespace MoreMountains.Tools
 			transform.position = _originalTransformPosition + _currentPoint.Current;
 		}
 
-        protected virtual void FixedUpdate()
-        {
-            if (UpdateMode == UpdateModes.FixedUpdate)
-            {
-                ExecuteUpdate();
-            }
-        }
+		protected virtual void FixedUpdate()
+		{
+			if (UpdateMode == UpdateModes.FixedUpdate)
+			{
+				ExecuteUpdate();
+			}
+		}
 
-        protected virtual void LateUpdate()
-        {
-            if (UpdateMode == UpdateModes.LateUpdate)
-            {
-                ExecuteUpdate();
-            }
-        }
+		protected virtual void LateUpdate()
+		{
+			if (UpdateMode == UpdateModes.LateUpdate)
+			{
+				ExecuteUpdate();
+			}
+		}
 
-        protected virtual void Update()
-        {
-            if (UpdateMode == UpdateModes.Update)
-            {
-                ExecuteUpdate();
-            }
-        }
+		protected virtual void Update()
+		{
+			if (UpdateMode == UpdateModes.Update)
+			{
+				ExecuteUpdate();
+			}
+		}
 
-        /// <summary>
-        /// Override this to describe what happens when a point is reached
-        /// </summary>
-        protected virtual void PointReached()
-        {
+		/// <summary>
+		/// Override this to describe what happens when a point is reached
+		/// </summary>
+		protected virtual void PointReached()
+		{
 
-        }
+		}
 
-        /// <summary>
-        /// Override this to describe what happens when the end of the path is reached
-        /// </summary>
-        protected virtual void EndReached()
-        {
+		/// <summary>
+		/// Override this to describe what happens when the end of the path is reached
+		/// </summary>
+		protected virtual void EndReached()
+		{
 
-        }
+		}
 
 		/// <summary>
 		/// On update we keep moving along the path
@@ -201,15 +203,18 @@ namespace MoreMountains.Tools
 		{
 			// if the path is null we exit, if we only go once and have reached the end we exit, if we can't move we exit
 			if(PathElements == null 
-				|| PathElements.Count < 1
-				|| _endReached
-				|| !CanMove
-				)
+			   || PathElements.Count < 1
+			   || _endReached
+			   || !CanMove
+			  )
 			{
+				CurrentSpeed = _vector3Zero;
 				return;
 			}
 
 			Move ();
+
+			_positionLastFrame = this.transform.position;
 		}
 
 		/// <summary>
@@ -226,7 +231,7 @@ namespace MoreMountains.Tools
 			}
 
 			// we store our initial position to compute the current speed at the end of the udpate	
-			_initialPosition=transform.position;
+			_initialPosition = transform.position;
 
 			// we move our object
 			MoveAlongThePath();
@@ -240,22 +245,22 @@ namespace MoreMountains.Tools
 				{
 					_waiting = PathElements[_currentIndex].Delay;				 
 				}
-                PointReached();
-                _previousPoint = _currentPoint.Current;
+				PointReached();
+				_previousPoint = _currentPoint.Current;
 				_currentPoint.MoveNext();
 			}
 
 			// we determine the current speed		
-			_finalPosition = transform.position;
-            if (Time.deltaTime != 0f)
-            {
-                CurrentSpeed = (_finalPosition - _initialPosition) / Time.deltaTime;
-            }
-
-            if (_endReached) 
+			_finalPosition = this.transform.position;
+			if (Time.deltaTime != 0f)
 			{
-                EndReached();
-                CurrentSpeed = Vector3.zero;
+				CurrentSpeed = (_finalPosition - _initialPosition) / Time.deltaTime;
+			}
+
+			if (_endReached) 
+			{
+				EndReached();
+				CurrentSpeed = Vector3.zero;
 			}
 		}
 
@@ -316,81 +321,81 @@ namespace MoreMountains.Tools
 				}
 
 				// if the path is looping
-                switch(CycleOption)
-                {
-                    case CycleOptions.Loop:
-                        index = index + _direction;
-                        if (index < 0)
-                        {
-                            index = PathElements.Count - 1;
-                        }
-                        else if (index > PathElements.Count - 1)
-                        {
-                            index = 0;
-                        }
-                        break;
+				switch(CycleOption)
+				{
+					case CycleOptions.Loop:
+						index = index + _direction;
+						if (index < 0)
+						{
+							index = PathElements.Count - 1;
+						}
+						else if (index > PathElements.Count - 1)
+						{
+							index = 0;
+						}
+						break;
 
-                    case CycleOptions.BackAndForth:
-                        if (index <= 0)
-                        {
-                            _direction = 1;
-                        }
-                        else if (index >= PathElements.Count - 1)
-                        {
-                            _direction = -1;
-                        }
-                        index = index + _direction;
-                        break;
+					case CycleOptions.BackAndForth:
+						if (index <= 0)
+						{
+							_direction = 1;
+						}
+						else if (index >= PathElements.Count - 1)
+						{
+							_direction = -1;
+						}
+						index = index + _direction;
+						break;
 
-                    case CycleOptions.OnlyOnce:
-                        if (index <= 0)
-                        {
-                            _direction = 1;
-                        }
-                        else if (index >= PathElements.Count - 1)
-                        {
-                            _direction = 0;
-                            CurrentSpeed = Vector3.zero;
-                            _endReached = true;
-                        }
-                        index = index + _direction;
-                        break;
+					case CycleOptions.OnlyOnce:
+						if (index <= 0)
+						{
+							_direction = 1;
+						}
+						else if (index >= PathElements.Count - 1)
+						{
+							_direction = 0;
+							CurrentSpeed = Vector3.zero;
+							_endReached = true;
+						}
+						index = index + _direction;
+						break;
                     
-                    case CycleOptions.Random:
-	                    int newIndex = index;
-	                    if (PathElements.Count > 1)
-	                    {
-		                    while (newIndex == index)
-		                    {
-			                    newIndex = Random.Range(0, PathElements.Count);
-		                    }    
-	                    }
-	                    index = newIndex;
-	                    break;
+					case CycleOptions.Random:
+						int newIndex = index;
+						if (PathElements.Count > 1)
+						{
+							while (newIndex == index)
+							{
+								newIndex = Random.Range(0, PathElements.Count);
+							}    
+						}
+						index = newIndex;
+						break;
 
-                    case CycleOptions.StopAtBounds:
-                        if (index <= 0)
-                        {
-                            if (_direction == -1)
-                            {
-                                CurrentSpeed = Vector3.zero;
-                                _endReached = true;
-                            }
-                            _direction = 1;
-                        }
-                        else if (index >= PathElements.Count - 1)
-                        {
-                            if (_direction == 1)
-                            {
-                                CurrentSpeed = Vector3.zero;
-                                _endReached = true;
-                            }
-                            _direction = -1;
-                        }
-                        index = index + _direction;
-                        break;
-                }
-            }
+					case CycleOptions.StopAtBounds:
+						if (index <= 0)
+						{
+							if (_direction == -1)
+							{
+								CurrentSpeed = Vector3.zero;
+								_endReached = true;
+							}
+							_direction = 1;
+						}
+						else if (index >= PathElements.Count - 1)
+						{
+							if (_direction == 1)
+							{
+								CurrentSpeed = Vector3.zero;
+								_endReached = true;
+							}
+							_direction = -1;
+						}
+						index = index + _direction;
+						break;
+				}
+			}
 		}
 
 		/// <summary>
@@ -421,7 +426,7 @@ namespace MoreMountains.Tools
 			// if we haven't stored the object's original position yet, we do it
 			if (_originalTransformPositionStatus==false)
 			{
-		    	_originalTransformPosition=transform.position;
+				_originalTransformPosition=transform.position;
 				_originalTransformPositionStatus=true;
 			}
 			// if we're not in runtime mode and the transform has changed, we update our position

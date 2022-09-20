@@ -6,19 +6,19 @@ using UnityEngine.EventSystems;
 
 namespace MoreMountains.Tools
 {
-    /// <summary>
-    /// Add this component to a GUI Image to have it act as a button. 
-    /// Bind pressed down, pressed continually and released actions to it from the inspector
-    /// Handles mouse and multi touch
-    /// </summary>
-    [RequireComponent(typeof(Rect))]
-    [RequireComponent(typeof(CanvasGroup))]
-    [AddComponentMenu("More Mountains/Tools/Controls/MMTouchButton")]
-    public class MMTouchButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler, ISubmitHandler
-    {
-	    [Header("Interaction")] 
-	    /// whether or not this button can be interacted with
-	    public bool Interactable = true;
+	/// <summary>
+	/// Add this component to a GUI Image to have it act as a button. 
+	/// Bind pressed down, pressed continually and released actions to it from the inspector
+	/// Handles mouse and multi touch
+	/// </summary>
+	[RequireComponent(typeof(Rect))]
+	[RequireComponent(typeof(CanvasGroup))]
+	[AddComponentMenu("More Mountains/Tools/Controls/MMTouchButton")]
+	public class MMTouchButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler, ISubmitHandler
+	{
+		[Header("Interaction")] 
+		/// whether or not this button can be interacted with
+		public bool Interactable = true;
 		
 		/// The different possible states for the button : 
 		/// Off (default idle state), ButtonDown (button pressed for the first time), ButtonPressed (button being pressed), ButtonUp (button being released), Disabled (unclickable but still present on screen)
@@ -355,9 +355,9 @@ namespace MoreMountains.Tools
 
 		private void OnDisable()
 		{
-			bool wasActive = CurrentState != ButtonStates.Off && CurrentState != ButtonStates.Disabled;
+			bool wasActive = CurrentState != ButtonStates.Off && CurrentState != ButtonStates.Disabled && CurrentState != ButtonStates.ButtonUp;
 			DisableButton();
-			CurrentState = ButtonStates.Off; // cause it's what is tested to StopInput (for weapon by example)
+			CurrentState = ButtonStates.Off; 
 			if (wasActive)
 			{
 				ButtonStateChange?.Invoke(PointerEventData.FramePressState.Released, null);

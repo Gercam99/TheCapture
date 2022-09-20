@@ -9,15 +9,15 @@ namespace MoreMountains.Tools
 	[System.Serializable]
 	public class AxisEvent : UnityEvent<float> {}
 
-    /// <summary>
-    /// Add this component to a GUI Image to have it act as an axis. 
-    /// Bind pressed down, pressed continually and released actions to it from the inspector
-    /// Handles mouse and multi touch
-    /// </summary>
+	/// <summary>
+	/// Add this component to a GUI Image to have it act as an axis. 
+	/// Bind pressed down, pressed continually and released actions to it from the inspector
+	/// Handles mouse and multi touch
+	/// </summary>
 	[RequireComponent(typeof(Rect))]
-    [RequireComponent(typeof(CanvasGroup))]
-    [AddComponentMenu("More Mountains/Tools/Controls/MMTouchAxis")]
-    public class MMTouchAxis : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
+	[RequireComponent(typeof(CanvasGroup))]
+	[AddComponentMenu("More Mountains/Tools/Controls/MMTouchAxis")]
+	public class MMTouchAxis : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler, IPointerEnterHandler
 	{
 		public enum ButtonStates { Off, ButtonDown, ButtonPressed, ButtonUp }
 		[Header("Binding")]
@@ -42,35 +42,35 @@ namespace MoreMountains.Tools
 
 		public ButtonStates CurrentState { get; protected set; }
 
-	    protected CanvasGroup _canvasGroup;
-	    protected float _initialOpacity;
+		protected CanvasGroup _canvasGroup;
+		protected float _initialOpacity;
 
-	    /// <summary>
-	    /// On Start, we get our canvasgroup and set our initial alpha
-	    /// </summary>
-	    protected virtual void Awake()
-	    {
+		/// <summary>
+		/// On Start, we get our canvasgroup and set our initial alpha
+		/// </summary>
+		protected virtual void Awake()
+		{
 			_canvasGroup = GetComponent<CanvasGroup>();
 			if (_canvasGroup!=null)
 			{
 				_initialOpacity = _canvasGroup.alpha;
 			}
 			ResetButton();
-	    }
+		}
 
 		/// <summary>
 		/// Every frame, if the touch zone is pressed, we trigger the bound method if it exists
 		/// </summary>
 		protected virtual void Update()
-	    {
+		{
 			if (AxisPressed != null)
 			{
 				if (CurrentState == ButtonStates.ButtonPressed)
 				{
 					AxisPressed.Invoke(AxisValue);
 				}
-	        }
-	    }
+			}
+		}
 
 		/// <summary>
 		/// At the end of every frame, we change our button's state if needed
@@ -91,7 +91,7 @@ namespace MoreMountains.Tools
 		/// Triggers the bound pointer down action
 		/// </summary>
 		public virtual void OnPointerDown(PointerEventData data)
-	    {
+		{
 			if (CurrentState != ButtonStates.Off)
 			{
 				return;
@@ -103,10 +103,10 @@ namespace MoreMountains.Tools
 				_canvasGroup.alpha=PressedOpacity;
 			}
 			if (AxisPressedFirstTime!=null)
-	        {
+			{
 				AxisPressedFirstTime.Invoke();
-	        }
-	    }
+			}
+		}
 
 		/// <summary>
 		/// Triggers the bound pointer up action
@@ -128,21 +128,21 @@ namespace MoreMountains.Tools
 				AxisReleased.Invoke();
 			}
 			AxisPressed.Invoke(0);
-	    }
+		}
 
 		/// <summary>
-	    /// OnEnable, we reset our button state
-	    /// </summary>
+		/// OnEnable, we reset our button state
+		/// </summary>
 		protected virtual void OnEnable()
-	    {
+		{
 			ResetButton();
-	    }
+		}
 
-	    /// <summary>
-	    /// Resets the button's state and opacity
-	    /// </summary>
-	    protected virtual void ResetButton()
-	    {
+		/// <summary>
+		/// Resets the button's state and opacity
+		/// </summary>
+		protected virtual void ResetButton()
+		{
 			CurrentState = ButtonStates.Off;
 			_canvasGroup.alpha = _initialOpacity;
 			CurrentState = ButtonStates.Off;

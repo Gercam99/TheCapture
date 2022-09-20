@@ -14,7 +14,7 @@ namespace MoreMountains.Tools
 		/// </summary>
 		public enum ButtonStates { Off, ButtonDown, ButtonPressed, ButtonUp }
 
-        public enum AxisTypes { Positive, Negative }
+		public enum AxisTypes { Positive, Negative }
 
 		/// <summary>
 		/// Takes an axis and returns a ButtonState depending on whether the axis is pressed or not (useful for xbox triggers for example), and when you need to use an axis/trigger as a binary thing
@@ -28,7 +28,7 @@ namespace MoreMountains.Tools
 			float axisValue = Input.GetAxis (axisName);
 			ButtonStates returnState;
 
-            bool comparison = (AxisType == AxisTypes.Positive) ? (axisValue < threshold) : (axisValue > threshold);
+			bool comparison = (AxisType == AxisTypes.Positive) ? (axisValue < threshold) : (axisValue > threshold);
 			
 			if (comparison)
 			{
@@ -85,7 +85,7 @@ namespace MoreMountains.Tools
 			protected float _lastButtonDownAt;
 			protected float _lastButtonUpAt;
 
-            public IMButton(string playerID, string buttonID, ButtonDownMethodDelegate btnDown = null, ButtonPressedMethodDelegate btnPressed = null, ButtonUpMethodDelegate btnUp = null) 
+			public IMButton(string playerID, string buttonID, ButtonDownMethodDelegate btnDown = null, ButtonPressedMethodDelegate btnPressed = null, ButtonUpMethodDelegate btnUp = null) 
 			{
 				ButtonID = playerID + "_" + buttonID;
 				ButtonDownMethod = btnDown;
@@ -98,39 +98,39 @@ namespace MoreMountains.Tools
 			public virtual void TriggerButtonDown()
 			{
 				_lastButtonDownAt = Time.unscaledTime;
-                if (ButtonDownMethod == null)
-                {
-                    State.ChangeState(MMInput.ButtonStates.ButtonDown);
-                }
-                else
-                {
-                    ButtonDownMethod();
-                }
+				if (ButtonDownMethod == null)
+				{
+					State.ChangeState(MMInput.ButtonStates.ButtonDown);
+				}
+				else
+				{
+					ButtonDownMethod();
+				}
 			}
 
 			public virtual void TriggerButtonPressed()
 			{
-                if (ButtonPressedMethod == null)
-                {
-                    State.ChangeState(MMInput.ButtonStates.ButtonPressed);
-                }
-                else
-                {
-                    ButtonPressedMethod();
-                }
+				if (ButtonPressedMethod == null)
+				{
+					State.ChangeState(MMInput.ButtonStates.ButtonPressed);
+				}
+				else
+				{
+					ButtonPressedMethod();
+				}
 			}
 
 			public virtual void TriggerButtonUp()
-            {
-	            _lastButtonUpAt = Time.unscaledTime;
-                if (ButtonUpMethod == null)
-                {
-                    State.ChangeState(MMInput.ButtonStates.ButtonUp);
-                }
-                else
-                {
-                    ButtonUpMethod();
-                }
+			{
+				_lastButtonUpAt = Time.unscaledTime;
+				if (ButtonUpMethod == null)
+				{
+					State.ChangeState(MMInput.ButtonStates.ButtonUp);
+				}
+				else
+				{
+					ButtonUpMethod();
+				}
 			}
 		}
 	}

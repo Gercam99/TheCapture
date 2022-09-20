@@ -41,7 +41,7 @@ namespace MoreMountains.Tools
 			int newSortingLayerOrder = EditorGUILayout.IntField("Order in Layer", _renderer.sortingOrder);
 		
 			if (sortingLayerNames[popupMenuIndex] != _renderer.sortingLayerName 
-				|| newSortingLayerOrder != _renderer.sortingOrder) 
+			    || newSortingLayerOrder != _renderer.sortingOrder) 
 			{
 				Undo.RecordObject(_renderer, "Change Particle System Renderer Order"); 
 

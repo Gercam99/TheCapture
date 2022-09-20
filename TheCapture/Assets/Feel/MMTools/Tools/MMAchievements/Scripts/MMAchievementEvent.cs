@@ -19,15 +19,15 @@ namespace MoreMountains.Tools
 		public MMAchievementUnlockedEvent(MMAchievement newAchievement)
 		{
 			Achievement = newAchievement;
-        }
+		}
 
-        static MMAchievementUnlockedEvent e;
-        public static void Trigger(MMAchievement newAchievement)
-        {
-            e.Achievement = newAchievement;
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static MMAchievementUnlockedEvent e;
+		public static void Trigger(MMAchievement newAchievement)
+		{
+			e.Achievement = newAchievement;
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 	
 	public struct MMAchievementChangedEvent
 	{
@@ -41,13 +41,13 @@ namespace MoreMountains.Tools
 		public MMAchievementChangedEvent(MMAchievement newAchievement)
 		{
 			Achievement = newAchievement;
-        }
+		}
 
-        static MMAchievementChangedEvent e;
-        public static void Trigger(MMAchievement newAchievement)
-        {
-            e.Achievement = newAchievement;
-            MMEventManager.TriggerEvent(e);
-        }
-    }
+		static MMAchievementChangedEvent e;
+		public static void Trigger(MMAchievement newAchievement)
+		{
+			e.Achievement = newAchievement;
+			MMEventManager.TriggerEvent(e);
+		}
+	}
 }
